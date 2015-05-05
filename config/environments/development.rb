@@ -40,11 +40,13 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   #needed for devise
-config.paperclip_defaults = {
-  :storage => :s3,
-  :s3_credentials => {
-    :bucket => 'rails-apps-dev'
+# Amazon Web Services - S3
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => 'rails-app-dev',
+      :s3_credentials => "#{Rails.root}/config/s3.yml",
+    }
   }
-}
 
 end
